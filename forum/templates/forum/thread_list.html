@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Forum Threads{% endblock %}
+
+{% block content %}
+<h1>Forum Threads</h1>
+<a href="{% url 'add_thread' %}" class="btn btn-primary">Create New Thread</a>
+<ul class="list-group list-group-flush mt-3">
+    {% for thread in threads %}
+        <li class="list-group-item">
+            <a href="{% url 'thread_detail' thread.pk %}">{{ thread.title }}</a>
+            by {{ thread.created_by.username }} on {{ thread.created_at }}
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}

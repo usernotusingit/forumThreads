@@ -1,0 +1,9 @@
+<h1>{{ thread.title }}</h1>
+<p>Started by {{ thread.created_by.username }} on {{ thread.created_at }}</p>
+<h2>Posts:</h2>
+<ul>
+    {% for post in posts %}
+        <li>{{ post.message }} - {{ post.created_by.username }} at {{ post.created_at }}</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'add_post' thread.pk %}">Add a Post</a>
